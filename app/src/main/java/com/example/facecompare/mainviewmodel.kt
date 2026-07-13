@@ -83,9 +83,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         detectJob = viewModelScope.launch {
             val resolver = getApplication<Application>().contentResolver
             val uriList = _selectedUris.value
-            loop@ for (uri in uriList) {
-                val currentState = _imageStates.value[uri] ?: continue@loop
-                if (currentState is ImageState.Done) continue@loop
+            for (uri in uriList) {
+                val currentState = _imageStates.value[uri] ?: continue
+                if (currentState is ImageState.Done) continue
 
                 _imageStates.value = _imageStates.value.toMutableMap().apply {
                     this[uri] = ImageState.Detecting
@@ -95,9 +95,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     // 加载图片
                     val bitmap = withContext(Dispatchers.IO) {
                         BitmapUtils.decodeSampledBitmap(resolver, uri)
-                    } ?: run {
+                    }
+                    if (bitmap == null) {
                         updateImageState(uri, ImageState.Error("无法加载图片"))
-                        continue@loop
+                        continue
                     }
 
                     // ML Kit 检测人脸
@@ -106,7 +107,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     if (faces.isEmpty()) {
                         updateImageState(uri, ImageState.Error("未检测到人脸"))
                         bitmap.recycle()
-                        continue@loop
+                        continue
                     }
 
                     // 取最大人脸
