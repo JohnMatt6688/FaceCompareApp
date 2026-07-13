@@ -44,7 +44,11 @@ class FaceEmbeddingEngine(
     private val inputShape: IntArray
 
     init {
-        val modelBuffer = FileUtil.loadMappedFile(context, MODEL_FILE)
+        val modelBuffer = try {
+            FileUtil.loadMappedFile(context, MODEL_FILE)
+        } catch (e: Exception) {
+            throw IllegalStateException("Failed to load model file '$MODEL_FILE' from assets. Please ensure the TFLite model file exists in the assets directory. Error: ${e.message}", e)
+        }
         interpreter = Interpreter(modelBuffer, Interpreter.Options().apply {
             setNumThreads(4)
             setUseNNAPI(false)

@@ -42,19 +42,13 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
-    aaptOptions {
-        noCompress("tflite")
-    }
 }
 
 dependencies {
     // Google ML Kit 人脸检测
     implementation("com.google.mlkit:face-detection:16.1.6")
-
-    // TensorFlow Lite
-    implementation("org.tensorflow:tensorflow-lite:2.14.0")
-    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    // Google ML Kit 人脸轮廓识别（用于更精确的人脸比对）
+    implementation("com.google.mlkit:face-contour:16.0.0-beta5")
 
     // AndroidX
     implementation("androidx.core:core-ktx:1.12.0")
