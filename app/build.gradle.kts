@@ -37,6 +37,10 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
+        // 新增：开启inline lambda内break/continue实验特性，解决编译报错
+        freeCompilerArgs += listOf(
+            "-Xuse-experimental=kotlin.experimental.breakContinueInInlineLambdas"
+        )
     }
 
     buildFeatures {
