@@ -37,31 +37,26 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
-        // 新增：开启inline lambda内break/continue实验特性，解决编译报错
-        freeCompilerArgs += listOf(
-            "-Xuse-experimental=kotlin.experimental.breakContinueInInlineLambdas"
-        )
     }
 
     buildFeatures {
         viewBinding = true
     }
 
-    // 禁止压缩 TFLite 模型
     aaptOptions {
         noCompress("tflite")
     }
 }
 
 dependencies {
-    // Google ML Kit 人脸检测（仅用于检测+裁剪）
+    // Google ML Kit 人脸检测
     implementation("com.google.mlkit:face-detection:16.1.6")
 
-    // TensorFlow Lite（运行 MobileFaceNet）
+    // TensorFlow Lite
     implementation("org.tensorflow:tensorflow-lite:2.14.0")
     implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
 
-    // AndroidX 核心
+    // AndroidX
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
