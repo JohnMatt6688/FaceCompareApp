@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F5F5"
+    android:clipToPadding="false">
+
+    <!-- 标题区 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📷 离线人脸比对"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#1A1A1A" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MobileFaceNet + ML Kit · 本地推理"
+        android:textSize="12sp"
+        android:textColor="#999"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 操作按钮行 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectPhotos"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="选择照片"
+            android:textSize="15sp"
+            app:icon="@android:drawable/ic_menu_gallery"
+            app:iconGravity="textStart"
+            style="@style/Widget.Material3.Button.TonalButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCompare"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="开始比对"
+            android:textSize="15sp"
+            android:enabled="false"
+            app:icon="@android:drawable/ic_menu_search"
+            app:iconGravity="textStart"
+            style="@style/Widget.Material3.Button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClear"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:text="✕"
+            android:enabled="false"
+            android:textSize="18sp"
+            style="@style/Widget.Material3.Button.TextButton" />
+    </LinearLayout>
+
+    <!-- 计数 -->
+    <TextView
+        android:id="@+id/textPhotoCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="未选择照片"
+        android:textSize="12sp"
+        android:textColor="#888"
+        android:layout_marginBottom="8dp" />
+
+    <!-- 已选人脸横向卡片 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerFaces"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- 进度条 -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:visibility="gone"
+        android:indeterminate="true"
+        style="@style/Widget.Material3.LinearProgressIndicator"
+        android:layout_marginBottom="4dp" />
+
+    <!-- 状态 / 结论文字 -->
+    <TextView
+        android:id="@+id/textProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请选择多张含人脸的照片进行比对"
+        android:textSize="13sp"
+        android:textColor="#333"
+        android:gravity="center"
+        android:padding="12dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="8dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginVertical="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="比对结果"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#1A1A1A"
+        android:layout_marginBottom="4dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerResults"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

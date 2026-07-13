@@ -1,0 +1,5 @@
+# MobileFaceNet TFLite 模型 —— 必须提交到仓库
+
+# 请将 mobilefacenet.tflite 放入此目录并 git add/commit。
+# 模型规格: 输入 [1,112,112,3] float32, 输出 [1,128] float32, ~4.5MB
+# CI 流水线不下载模型，直接从仓库读取。

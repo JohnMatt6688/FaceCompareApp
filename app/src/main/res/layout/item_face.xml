@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="100dp"
+    android:layout_height="110dp"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/imageFace"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:scaleType="centerCrop"
+            android:background="#EFEFEF" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleSmall" />
+
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageFace"
+            android:layout_centerHorizontal="true"
+            android:textSize="10sp"
+            android:textColor="#666"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/btnRemove"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:text="✕"
+            android:textSize="12sp"
+            android:textColor="#FF4444"
+            android:gravity="center"
+            android:background="@drawable/bg_remove_btn"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
